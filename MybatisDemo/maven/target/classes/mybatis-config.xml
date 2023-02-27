@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+        properties 标签中的配置可以供整个配置文件使用，在任何位置都可以引入其中配置的值。
+        properties 标签可以通过子标签 property 标签来配置一些子元素信息，也可以配置外部的动态文件。
+    -->
+    <properties resource="mysql.properties"/>
+    <!-- 别名-->
+    <typeAliases>
+        <package name="com.itheima.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--连接池信息-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--mappers映射器-->
+    <mappers>
+
+        <package name="com.itheima.mapper"/>
+    </mappers>
+</configuration>
